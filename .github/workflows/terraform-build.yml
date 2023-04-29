@@ -1,0 +1,18 @@
+name: AWS Workflow
+on: 
+  push
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  terraformInit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3  
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::767404772322:role/github-actions
+          role-session-name: github-actions-session
+          aws-region: ap-northeast-2   
