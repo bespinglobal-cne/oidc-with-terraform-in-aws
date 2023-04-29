@@ -1,9 +1,11 @@
 name: AWS Workflow
 on: 
   push
+env:
+  AWS_REGION: "ap-northeast-2"  
 permissions:
   id-token: write
-  contents: read
+  contents: read 
 jobs:
   terraformInit:
     runs-on: ubuntu-latest
@@ -15,4 +17,4 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::767404772322:role/github-actions
           role-session-name: github-actions-session
-          aws-region: ap-northeast-2   
+          aws-region: ${{ env.AWS_REGION }}  
