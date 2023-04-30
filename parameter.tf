@@ -1,6 +1,7 @@
 locals {
   my_parameters = {
     environment = "development"
+    version     = "1.0"
     mykey       = "myvalue"
   }
 }
