@@ -1,11 +1,16 @@
 name: AWS Workflow
 on: 
-  push
+  push:
+    branches:
+      - main
+
 env:
   AWS_REGION: "ap-northeast-2"  
+
 permissions:
   id-token: write
   contents: read 
+
 jobs:
   terraformInit:
     runs-on: ubuntu-latest
@@ -20,4 +25,5 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}  
       - name: check aws profile list
         run: |
-          aws configure list-profiles     
+          aws configure list-profiles > test
+          cat test     
