@@ -18,3 +18,6 @@ jobs:
           role-to-assume: arn:aws:iam::767404772322:role/github-actions
           role-session-name: github-actions-session
           aws-region: ${{ env.AWS_REGION }}  
+      - name: check aws profile list
+        run: |
+          aws configure list-profiles     
