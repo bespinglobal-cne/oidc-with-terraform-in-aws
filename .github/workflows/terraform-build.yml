@@ -23,7 +23,10 @@ jobs:
           role-to-assume: arn:aws:iam::767404772322:role/github-actions
           role-session-name: github-actions-session
           aws-region: ${{ env.AWS_REGION }}  
-      - name: check aws profile list
-        run: |
-          aws configure list-profiles > test
-          cat test     
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.4.5
+      - name: Terraform Init
+        run: terraform init
+      - name: Terraform Format
+        run: terraform fmt -check      
